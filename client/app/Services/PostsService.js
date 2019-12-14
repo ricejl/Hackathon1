@@ -23,7 +23,6 @@ class PostsService {
   }
 
   async editPostAsync(postId, change) {
-    debugger;
     let editPost = store.State.posts.find(post => postId == post._id);
     await jackDatabase.put("posts/" + `${postId}`, change);
     this.getPostsAsync();

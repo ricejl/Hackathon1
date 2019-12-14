@@ -14,7 +14,6 @@ function _drawGiphy() {
 // Public
 export default class GiphyController {
   constructor() {
-    console.log("hey from Controller", store.State.activeGiphy);
     store.subscribe("giphy", _drawGiphy);
     GiphyService.connectGiphy();
   }

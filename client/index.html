@@ -43,21 +43,21 @@
         <div class="col-6 offset-3 text-center">
           <form onsubmit="app.postsController.addPostAsync(event)">
             <!-- TODO function name must match conroller -->
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              placeholder="Enter a username..."
+              required
+            />
             <textarea
               type="text"
               name="article"
-              class="form-control"
+              class="form-control mt-2 mb-2"
               rows="2"
               placeholder="Give me your pitch..."
               required
             ></textarea>
-            <input
-              type="text"
-              name="username"
-              class="form-control mt-2 mb-2"
-              placeholder="Enter a username..."
-              required
-            />
             <!-- TODO may need to change textarea to input for functionality?? -->
             <button class="btn btn-info">Submit</button>
             <!-- TODO change button to fontawesome plus and move to upper rt corner of textbox -->

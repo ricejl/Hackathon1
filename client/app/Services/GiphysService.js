@@ -17,7 +17,7 @@ class GiphyService {
     console.log("MAYBE properly tagged url", res);
     let data = new Giphy(res.data.data);
     store.commit("giphy", data);
-    console.log(data);
+    console.log("new Giphy instance committed to store", data);
     console.log(store.State.giphy);
   }
 }
