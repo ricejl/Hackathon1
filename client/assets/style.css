@@ -20,20 +20,24 @@
 }
 
 .fa-edit {
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .fa-edit:hover {
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .fa-trash-alt {
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .fa-trash-alt:hover {
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.6;
   color: brown;
+}
+
+.hr-post-bottom {
+  width: 90%;
 }

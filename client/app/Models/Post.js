@@ -27,7 +27,7 @@ export default class Post {
                 <div class="m-0 pl-3">
                     <span>${this.title}</span>
                     <p class="text-danger m-0" id="username">${this.username}</p>
-                    <p class="text-primary m-0">${this.word}</p>
+                    <p class="text-info m-0">${this.word}</p>
                 </div>
                 <p class="m-0 pl-3">
                   ${this.article}
@@ -36,6 +36,7 @@ export default class Post {
                 </p>
             </div>
         </div>
+        <hr class="hr-post-bottom mt-0">
         `;
   }
 }
