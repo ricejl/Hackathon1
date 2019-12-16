@@ -14,8 +14,31 @@ class PostsService {
   async getPostsAsync() {
     let res = await jackDatabase.get("posts");
     let posts = res.data.map(post => new Post(post));
+
+    function compareVotes(key, order = "asc") {
+      return function innerSort(a, b) {
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+          return 0;
+        }
+        const varA = a[key];
+        const varB = b[key];
+
+        let comparison = 0;
+        if (varA > varB) {
+          comparison = 1;
+        } else if (varA < varB) {
+          comparison = -1;
+        }
+        return order === "desc" ? comparison * -1 : comparison;
+      };
+    }
+    posts.sort(compareVotes("votes", "desc"));
+
     store.commit("posts", posts);
-    // NOTE need to determine commit path
+    console.log("order of posts in store", store.State.posts);
+    // console.log(
+    //   store.State.posts.map(post => post.votes).sort((a, b) => b - a)
+    // );
   }
   async addPostAsync(newPost) {
     let res = await jackDatabase.post("posts", newPost);
@@ -37,11 +60,8 @@ class PostsService {
       votes: post.votes++
     });
     console.log("upvote after put request to database", res);
-    //FIXME number of votes in store is one more than in database before and after getPostsAsync
     // TODO add timeout/button disable to prevent multiple votes from single user
-    console.log("UPVOTES store before getPostsAsync", store.State.posts);
     this.getPostsAsync();
-    console.log("store after getPostsAsync in upvote fn", store.State.posts);
   }
 
   async downvote(postId) {
@@ -51,7 +71,6 @@ class PostsService {
       let res = await jackDatabase.put("posts/" + `${postId}`, {
         votes: --post.votes
       });
-      console.log("from downvote after put request", res);
       this.getPostsAsync();
     }
   }

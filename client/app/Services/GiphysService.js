@@ -21,6 +21,7 @@ class GiphyService {
     console.log(store.State.giphy);
   }
 }
+// FIXME connectGiphy being called twice--once in GiphyService (cannot yet add job tag at url end bc job has not yet populated) and once in jobsservice (adds job tag)
 
 const service = new GiphyService();
 export default service;

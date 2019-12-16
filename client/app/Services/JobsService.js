@@ -16,6 +16,8 @@ class JobsService {
     this.getActiveJobAsync();
     GiphysService.connectGiphy();
   }
+  // FIXME connectGiphy being called twice--once in GiphyService (cannot yet add job tag at url end bc job has not yet populated) and once in jobsservice (adds job tag)
+
   async getActiveJobAsync() {
     let max = store.State.jobs.length;
     let random = store.State.jobs[Math.floor(Math.random() * max)];
