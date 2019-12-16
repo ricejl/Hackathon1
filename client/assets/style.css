@@ -4,6 +4,10 @@
   right: 1.2em;
 }
 
+#vote-box {
+  width: 5em;
+}
+
 .fa-caret-down,
 .fa-caret-up {
   cursor: pointer;

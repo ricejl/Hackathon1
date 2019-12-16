@@ -12,8 +12,8 @@ function _drawPosts() {
 //Public
 export default class PostsController {
   constructor() {
-    _drawPosts();
     store.subscribe("posts", _drawPosts);
+    _drawPosts();
   }
 
   async getPostsAsync() {
@@ -23,6 +23,7 @@ export default class PostsController {
       console.error(error);
     }
   }
+
   async addPostAsync(event) {
     event.preventDefault();
     let formData = event.target;
@@ -31,7 +32,8 @@ export default class PostsController {
       username: formData.username.value,
       article: formData.article.value,
       title: store.State.activeJob.name,
-      word: store.State.word.word
+      word: store.State.word.word,
+      votes: 1
     };
     formData.reset();
     try {
@@ -51,6 +53,23 @@ export default class PostsController {
       console.error(error);
     }
   }
+
+  async upvote(postId) {
+    try {
+      await PostsService.upvote(postId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async downvote(postId) {
+    try {
+      await PostsService.downvote(postId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async deletePostAsync(postId) {
     if (!window.confirm("Delete post?")) {
       return;

@@ -5,7 +5,7 @@ export default class Giphy {
 
   get Template() {
     return `
-    <iframe src="${this.giph}"></iframe
+    <iframe frameBorder="0" src="${this.giph}"></iframe
     `;
   }
 }

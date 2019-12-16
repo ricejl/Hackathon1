@@ -8,7 +8,8 @@ const Post = new Schema(
     username: { type: String, required: true },
     title: { type: String, required: true },
     jobId: { type: ObjectId, ref: "Job", required: true },
-    word: { type: String, required: true }
+    word: { type: String, required: true },
+    votes: { type: Number, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
